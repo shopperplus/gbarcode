@@ -1,3 +1,5 @@
+h1.Add the gemspec for github installing.
+
 =Gbarcode
 
 This project is a C extension that wraps the GNU Barcode project using SWIG. 
