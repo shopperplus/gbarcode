@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+require 'rubygems'
+require 'rake'
 
 GEM_NAME = "gbarcode" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "gbarcode" # The unix name for your project
