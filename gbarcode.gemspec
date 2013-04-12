@@ -30,4 +30,7 @@ SPEC = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = ">= 1.8.4"
   s.rubyforge_project = RUBYFORGE_PROJECT
+  
+  s.add_development_dependency('rdoc')
+  s.add_development_dependency('rake')
 end
