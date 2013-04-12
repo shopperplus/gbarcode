@@ -1,7 +1,5 @@
 # -*- encoding: utf-8 -*-
 require 'rubygems'
-require 'rake'
-require 'rubygems/package_task'
 
 GEM_NAME = "gbarcode" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "gbarcode" # The unix name for your project
@@ -30,7 +28,7 @@ SPEC = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = ">= 1.8.4"
   s.rubyforge_project = RUBYFORGE_PROJECT
-  
+
   s.add_development_dependency('rdoc')
   s.add_development_dependency('rake')
 end
