@@ -13,7 +13,7 @@ REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(d+
 GEM_VERSION = "0.98"
 RDOC_OPTS = ["--exclude", "\.c$"]
 PKG = "#{GEM_NAME}-#{GEM_VERSION}"
-PKG_FILES = FileList['*.txt', 'doc/**/*.*', 'ext/**/*.c', 'ext/**/*.h', 'ext/**/*.rb']
+PKG_FILES = Dir['*.txt', 'doc/**/*.*', 'ext/**/*.c', 'ext/**/*.h', 'ext/**/*.rb']
 
 SPEC = Gem::Specification.new do |s|
   s.name = GEM_NAME
@@ -23,11 +23,11 @@ SPEC = Gem::Specification.new do |s|
   s.author = "Angel Pizarro"
   s.email = "angel@delagoya.com"
   s.homepage = "http://gbarcode.rubyforge.org"
-  s.test_files = FileList['test/**/*']
+  s.test_files = Dir['test/**/*']
   s.files = PKG_FILES
   s.require_paths = [".","ext"]
   s.extensions = ["ext/extconf.rb"]
-  s.extra_rdoc_files = FileList['*.txt']
+  s.extra_rdoc_files = Dir['*.txt']
   s.has_rdoc = true
   s.rdoc_options = RDOC_OPTS
   s.platform = Gem::Platform::RUBY
@@ -39,7 +39,7 @@ desc "package the gem"
 Gem::PackageTask.new(SPEC) do |pkg|
   pkg.need_zip = true
   pkg.need_tar = true
-  # rm_f FileList['pkg/**/*.*']
+  # rm_f Dir['pkg/**/*.*']
 end
 
 desc "Run test code"
@@ -57,12 +57,12 @@ RDoc::Task.new(:docs) do |rd|
 end
 
 desc "Makes the Makefile"
-task :extconf do 
+task :extconf do
   system 'cd ext/; ruby extconf.rb'
 end
 
 desc "Compiles extensions"
-task :compile => [:extconf] do 
+task :compile => [:extconf] do
   system 'cd ext/; make'
 end
 
@@ -72,7 +72,7 @@ Win32Spec = SPEC.dup
 Win32Spec.platform = 'x86-mswin32'
 Win32Spec.files = PKG_FILES + ['lib/hpricot_scan.so']
 Win32Spec.extensions = []
-  
+
 WIN32_PKG_DIR = "#{PKG}-mswin32"
 
 desc "Package up the Win32 distribution."
@@ -103,4 +103,4 @@ CLEAN.include WIN32_PKG_DIR
 ### end WIN32 ###
 
 # add compiled files to clean list
-CLOBBER << FileList["ext/**/*.o", "ext/Makefile"]
+CLOBBER << Dir["ext/**/*.o", "ext/Makefile"]

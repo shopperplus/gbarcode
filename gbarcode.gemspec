@@ -8,7 +8,7 @@ REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(d+
 GEM_VERSION = "0.98"
 RDOC_OPTS = ["--exclude", "\.c$"]
 PKG = "#{GEM_NAME}-#{GEM_VERSION}"
-PKG_FILES = FileList['*.txt', 'doc/**/*.*', 'ext/**/*.c', 'ext/**/*.h', 'ext/**/*.rb']
+PKG_FILES = Dir['*.txt', 'doc/**/*.*', 'ext/**/*.c', 'ext/**/*.h', 'ext/**/*.rb']
 
 SPEC = Gem::Specification.new do |s|
   s.name = GEM_NAME
@@ -18,11 +18,11 @@ SPEC = Gem::Specification.new do |s|
   s.author = "Angel Pizarro"
   s.email = "angel@delagoya.com"
   s.homepage = "http://gbarcode.rubyforge.org"
-  s.test_files = FileList['test/**/*']
+  s.test_files = Dir['test/**/*']
   s.files = PKG_FILES
   s.require_paths = [".","ext"]
   s.extensions = ["ext/extconf.rb"]
-  s.extra_rdoc_files = FileList['*.txt']
+  s.extra_rdoc_files = Dir['*.txt']
   s.has_rdoc = true
   s.rdoc_options = RDOC_OPTS
   s.platform = Gem::Platform::RUBY
